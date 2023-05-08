@@ -57,7 +57,7 @@
 </script>
 
 <template>
-<div v-for="(item, index) in produtos" :key="item.id">
+<div v-for="(item) in produtos" :key="item.id">
   <p>Nome: {{ item.name.value }}</p>
   <p>Preço: {{ item.preco }}</p>
 </div>
