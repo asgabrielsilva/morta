@@ -5,53 +5,77 @@
     {
         id: 1,
         nome: 'Camiseta',
-        preco: 49.90
+        preco: 49.90,
+        quantidade: 0,
+        valorTotal: 49.90
+
     },
     {
         id: 2,
         nome: 'Calça',
-        preco: 99.90
+        preco: 99.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 3,
         nome: 'Meia',
-        preco: 9.90
+        preco: 9.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 4,
         nome: 'Sapato',
-        preco: 199.90
+        preco: 199.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 5,
         nome: 'Boné',
-        preco: 29.90
+        preco: 29.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 6,
         nome: 'Óculos',
-        preco: 99.90
+        preco: 99.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 7,
         nome: 'Relógio',
-        preco: 299.90
+        preco: 299.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 8,
         nome: 'Bermuda',
-        preco: 79.90
+        preco: 79.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 9,
         nome: 'Cueca',
-        preco: 19.90
+        preco: 19.90,
+        quantidade: 0,
+        valorTotal: 49.90
     },
     {
         id: 10,
         nome: 'Meia',
-        preco: 9.90
+        preco: 9.90,
+        quantidade: 0,
+        valorTotal: 49.90
     }
+])
+const carrinhoCompras = ref([
+
 ])
 const listaCompras = ref([
     { nome: 'arroz', quantidade: 1 },
@@ -61,13 +85,16 @@ const listaCompras = ref([
   
   function incrementar(index) {
     listaCompras.value[index].quantidade++
-  }
+  } <button @click="incrementar(index)">Incrementar</button>
+
   function decrementar(index) {
     listaCompras.value[index].quantidade--
-  }
+  } <button v-if="item.quantidade > 1" @click="decrementar(index)">Decrementar</button>
+
   function remover(index) {
     listaCompras.value.splice(index, 1)
-  }
+  } <button @click="remover(index)">Remover</button>
+
 </script>
 
 <template>
@@ -76,11 +103,6 @@ const listaCompras = ref([
   <p>Preço: {{ item.preco }}</p>
 </div>
 
-<ul>
-    <li v-for="(item, index) in listaCompras">{{ item.nome }} - {{ item.quantidade }} <button @click="incrementar(index)">Incrementar</button>
-        <button v-if="item.quantidade > 1" @click="decrementar(index)">Decrementar</button>
-        <button @click="remover(index)">Remover</button></li>
-  </ul>
 </template>
 
 <style scoped>
