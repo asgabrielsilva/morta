@@ -1,7 +1,7 @@
 <script setup>
  import { ref } from 'vue'
 
- const produtos = [
+ const produtos = ref([
     {
         id: 1,
         nome: 'Camiseta',
@@ -52,16 +52,35 @@
         nome: 'Meia',
         preco: 9.90
     }
-]
-
+])
+const listaCompras = ref([
+    { nome: 'arroz', quantidade: 1 },
+    { nome: 'batata', quantidade: 2 },
+    { nome: 'feijão', quantidade: 3 }
+  ])
+  
+  function incrementar(index) {
+    listaCompras.value[index].quantidade++
+  }
+  function decrementar(index) {
+    listaCompras.value[index].quantidade--
+  }
+  function remover(index) {
+    listaCompras.value.splice(index, 1)
+  }
 </script>
 
 <template>
 <div v-for="(item) in produtos" :key="item.id">
-  <p>Nome: {{ item.name.value }}</p>
+  <p>Nome: {{ item.nome }}</p>
   <p>Preço: {{ item.preco }}</p>
 </div>
 
+<ul>
+    <li v-for="(item, index) in listaCompras">{{ item.nome }} - {{ item.quantidade }} <button @click="incrementar(index)">Incrementar</button>
+        <button v-if="item.quantidade > 1" @click="decrementar(index)">Decrementar</button>
+        <button @click="remover(index)">Remover</button></li>
+  </ul>
 </template>
 
 <style scoped>
