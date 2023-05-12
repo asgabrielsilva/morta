@@ -6,82 +6,75 @@ const produtos = ref([
        id: 1,
        nome: 'Camiseta',
        preco: 49.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
 
    },
    {
        id: 2,
        nome: 'Calça',
        preco: 99.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 3,
        nome: 'Meia',
        preco: 9.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 4,
        nome: 'Sapato',
        preco: 199.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 5,
        nome: 'Boné',
        preco: 29.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 6,
        nome: 'Óculos',
        preco: 99.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 7,
        nome: 'Relógio',
        preco: 299.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 8,
        nome: 'Bermuda',
        preco: 79.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 9,
        nome: 'Cueca',
        preco: 19.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    },
    {
        id: 10,
        nome: 'Meia',
        preco: 9.90,
-       quantidade: 0,
-       valorTotal: 49.90
+       quantidade: 0
    }
 ])
 const carrinhoCompras = ref([
-
 ])
-const listaCompras = ref([
-   { nome: 'arroz', quantidade: 1 },
-   { nome: 'batata', quantidade: 2 },
-   { nome: 'feijão', quantidade: 3 }
- ])
+
+  
+  function adicionar(item) {
+    carrinhoCompras.value.push({
+      id: item.id,
+      nome: item.nome,
+      preco: item.preco
+    })
+  }
 </script>
 
 <template>
@@ -93,14 +86,28 @@ const listaCompras = ref([
   </div>
   <ul class="list-group list-group-flush" >
     <li class="list-group-item">
-  <p>Preço: R${{ item.preco }}</p></li>
+  <p>Preço: R${{ item.preco }}</p>
+    </li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link">Card link</a>
-    <button type="button" class="btn btn-primary">Comprar</button>
+    <button @click="adicionar(item)" type="button" class="btn btn-primary">Comprar</button>
   </div>
 </div>
+
+<div class="card" style="width: 15rem;" v-for="(item) in carrinhoCompras" :key="item.id">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.nome }}</h5>
+    <p class="card-text"> texto</p>
+  </div>
+  <ul class="list-group list-group-flush" >
+    <li class="list-group-item">
+  <p>Preço: R${{ item.preco }}</p>
+    </li>
+  </ul>
 </div>
+</div>
+
 </template>
 
 <style scoped>
