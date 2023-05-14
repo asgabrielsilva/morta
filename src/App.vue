@@ -6,9 +6,9 @@ const item = ref([
        id: 1,
        nome: 'Camiseta',
        descricao: 'Uma camiseta limda',
-       preco: 49.90,
+       preco: 49.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg" ,
 
    },
@@ -16,120 +16,139 @@ const item = ref([
        id: 2,
        nome: 'Calça',
        descricao: 'Unma calsa glamurosa',
-       preco: 99.90,
+       preco: 99.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg" ,
    },
    {
        id: 3,
        nome: 'Meia',
        descricao: 'do novo filme da barbi',
-       preco: 9.90,
+       preco: 9.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
    },
    {
        id: 4,
        nome: 'Sapato',
        descricao: 'Crocs perfeito',
-       preco: 199.90,
+       preco: 199.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg" ,
    },
    {
        id: 5,
        nome: 'Boné',
        descricao: 'importado do presídio',
-       preco: 29.90,
+       preco: 29.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
    },
    {
        id: 6,
        nome: 'Óculos',
        descricao: 'Óculos Adryan Óculos',
-       preco: 99.90,
+       preco: 99.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
    },
    {
        id: 7,
        nome: 'Relógio',
        descricao: 'não é roubado',
-       preco: 299.90,
+       preco: 299.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
    },
    {
        id: 8,
        nome: 'Bermuda',
        descricao: 'Uma bermuta boninta',
-       preco: 79.90,
+       preco: 79.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
    },
    {
        id: 9,
        nome: 'Cueca',
        descricao: 'Proteção garantida',
-       preco: 19.90,
+       preco: 19.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem :"https://images7.memedroid.com/images/UPLOADED672/5eb5b3f19c9a8.jpeg" ,
    },
    {
        id: 10,
        nome: 'Meia',
        descricao: 'Meia de novo',
-       preco: 9.90,
+       preco: 9.99,
        quantidade: 0,
-       valorTotal: 49.90,
+       valorTotal: 49.99,
        imagem : "https://images7.memedroid.com/images/UPLOADED672/5eb5b3f19c9a8.jpeg",
    }
    
 ])
 
  function incrementar(index) {
-    item.value[index].quantidade++
+    carrinho.value[index].quantidade++
+    carrinho.value[index].totalItem = (carrinho.value[index].preco * carrinho.value[index].quantidade).toFixed(2)
+    calcularTotal()
   }
-  function descrementar(index) {
-    item.value[index].quantidade--
+  function decrementar(index) {
+    carrinho.value[index].quantidade--
+    carrinho.value[index].totalItem = (carrinho.value[index].preco * carrinho.value[index].quantidade).toFixed(2)
+    calcularTotal()
   }
-  let valortotal = ref(0)
+  
 
   const carrinho = ref([])
-function addCarrinho(item) {
+function addCarrinho(item, index) {
+  if(item.quantidade == 0){
+  item.quantidade = 1
   carrinho.value.push({
     codigo: item.id,
     nome: item.nome,
     preco: item.preco,
     quantidade: item.quantidade,
-    totalItem: item.preco * item.quantidade
+    totalItem: item.preco
   })
-  totalValor()
-  item.quantidade = 1
+  } 
+  calcularTotal()
+  
+ 
 }
-function totalValor(){
-  for (let contador = 0; contador < carrinho.value.length; contador++) {
-    valortotal.value = valortotal.value + carrinho.value[contador].totalItem  
+const valorTotal = ref(0)
+
+  function calcularTotal() {
+    valorTotal.value = 0
+    for(let i in carrinho.value) {
+    valorTotal.value += Number(carrinho.value[i].totalItem)
   }
-}
+  valorTotal.value = valorTotal.value.toFixed(2)
+  }
 function limpaCarrinho() {
   carrinho.value = []
+  calcularTotal()
 }
 function remover(index) {
+  carrinho.value[index].quantidade = 0
   carrinho.value.splice(index, 1)
+  calcularTotal()
 }
 </script>
 
 <template>
+  <div class="greice">
+  <img src="components/13235657_1117075674982087_6011802041793867339_o.jpg" alt="">
+
+  <div class="abananga">
   <div class="collapse" id="navbarToggleExternalContent">
   <div class="bg-dark p-4">
     <button class="btn btn-outline-success me-2" type="button">Carrinho</button>
@@ -145,7 +164,26 @@ function remover(index) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Informações aqui gabriel
+        <div class="">
+    <h1>Carrinho</h1> 
+    <ul class="list-group">
+      <li class="list-group-item" style="font-size: 20px;" v-for="(item, index) in carrinho" :key="index">{{ item.nome }} 
+      <li class="list-group"> valor: R${{item.preco }}</li>
+    <li class="list-group-item">Quantidade: {{ item.quantidade }}</li>
+    <button class="btn btn-outline-success" id="remove" @click="incrementar(index)">gg</button>  
+    <button  class="btn btn-outline-warning" id="remove" v-if="item.quantidade > 1" @click="decrementar(index)">ff</button>  
+    <button class="btn btn-outline-danger" id="remove" @click="remover(index)">remover item</button>  
+    <p class="letraTotal">Preço total: {{ (item.totalItem) }}</p>
+    
+   
+      </li>
+
+    </ul>
+    <ul class="list-group">
+    <li class="list-group-item"> Valor Total R${{ valorTotal }}</li>
+  </ul>
+    <button class="btn btn-primary" @click="limpaCarrinho()">limpar carrinho</button>
+  </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -165,7 +203,7 @@ function remover(index) {
 </nav>
   <div class="row">
  <div class="card" style="width: 15rem;" v-for="(item, index) in item" :key="item.id">
-  <img src="{{ item.imagem }}" class="card-img-top" alt="...">
+  <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t31.18172-8/13235657_1117075674982087_6011802041793867339_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=0NaXfo85KHQAX_FnKrm&_nc_ht=scontent.fjoi10-1.fna&oh=00_AfCqNlBsA787d6PDGSSQhNwGVfH8cg_ioVthaPG2kd-MOA&oe=64875ED9" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{ item.nome }}</h5>
     <p class="card-text"> {{  item.descricao  }}</p>
@@ -177,34 +215,15 @@ function remover(index) {
   
   <div class="card-body">
     <a href="#" class="card-link">Card link</a>
-    <button type="button" class="btn btn-primary" @click="addCarrinho(index)">Adicionar</button>
+    <button type="button" class="btn btn-primary" @click="addCarrinho(item)">Adicionar</button>
   </div>
-  <li v-for="item in carrinhos">
-        <p>Item: {{ item.name }}</p>
-
-        <p>Preco: {{ item.price }}</p>
-        <p>ID: {{ item.id }}</p>
-    </li>
-  
 </div>
 </div>
 <ul>
-    <div class="">
-    <h1>Carrinho</h1> 
-    <ul>
-      <li v-for="(item, index) in carrinho" :key="index">{{ item.nome }} 
-      <p> valor: {{(item.preco) }} Preço</p>
-    <p>Quant: {{ item.quantidade }}</p>
-    <button id="remove" @click="remover(index)">remover item</button>  
-    <p class="letraTotal">Preço total: {{ (item.totalItem) }}</p>
     
-   
-      </li>
-    </ul>
-    <button @click="limpaCarrinho()">limpar carrinho</button>
-  </div>
 </ul>
-
+</div>
+</div>
 </template>
 
 <style scoped>
@@ -230,7 +249,10 @@ function remover(index) {
       border-width: 3px;
   
 }
-
+.list-group-item {
+  margin: 5px;
+  
+}
 .row {
   display: flex;
   justify-content: center;
@@ -261,5 +283,19 @@ a.card-link {
     border-radius: 20px;
     border-color: #868686;
     border-width: 3px;
+}
+
+.greice {
+  width: 100%;
+  height: 100%;
+  background-image: url("components/13235657_1117075674982087_6011802041793867339_o.jpg");
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.letraTotal {
+  margin-top: 10px;
 }
 </style>
