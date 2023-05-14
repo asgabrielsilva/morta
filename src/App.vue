@@ -173,7 +173,6 @@ function remover(index) {
   <div class="abananga">
   <div class="collapse" id="navbarToggleExternalContent">
   <div class="bg-dark p-4">
-    <button class="btn btn-outline-success me-2" type="button">Carrinho</button>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Carrinho
 </button>
