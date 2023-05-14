@@ -5,96 +5,117 @@ const item = ref([
    {
        id: 1,
        nome: 'Camiseta',
+
        descricao: 'Uma camiseta limda',
        preco: 49.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg" ,
 
+
    },
    {
        id: 2,
        nome: 'Calça',
+
        descricao: 'Unma calsa glamurosa',
        preco: 99.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg" ,
+
    },
    {
        id: 3,
        nome: 'Meia',
+
        descricao: 'do novo filme da barbi',
        preco: 9.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
+
    },
    {
        id: 4,
        nome: 'Sapato',
+
        descricao: 'Crocs perfeito',
        preco: 199.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg" ,
+
    },
    {
        id: 5,
        nome: 'Boné',
+
        descricao: 'importado do presídio',
        preco: 29.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
+
    },
    {
        id: 6,
        nome: 'Óculos',
+
        descricao: 'Óculos Adryan Óculos',
        preco: 99.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
+
    },
    {
        id: 7,
        nome: 'Relógio',
+
        descricao: 'não é roubado',
        preco: 299.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
+
    },
    {
        id: 8,
        nome: 'Bermuda',
+
        descricao: 'Uma bermuta boninta',
        preco: 79.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://pbs.twimg.com/profile_images/1640054291984424965/5WyzoEgy_400x400.jpg",
+
    },
    {
        id: 9,
        nome: 'Cueca',
+
        descricao: 'Proteção garantida',
        preco: 19.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem :"https://images7.memedroid.com/images/UPLOADED672/5eb5b3f19c9a8.jpeg" ,
+
    },
    {
        id: 10,
        nome: 'Meia',
+
        descricao: 'Meia de novo',
        preco: 9.99,
        quantidade: 0,
        valorTotal: 49.99,
        imagem : "https://images7.memedroid.com/images/UPLOADED672/5eb5b3f19c9a8.jpeg",
+
    }
    
 ])
+
 
  function incrementar(index) {
     carrinho.value[index].quantidade++
@@ -142,6 +163,7 @@ function remover(index) {
   carrinho.value.splice(index, 1)
   calcularTotal()
 }
+
 </script>
 
 <template>
@@ -210,20 +232,29 @@ function remover(index) {
   </div>
   <ul class="list-group list-group-flush" >
     <li class="list-group-item">
+
   <p>Preço: R${{ item.preco }}</p></li> </ul>
   
   
   <div class="card-body">
     <a href="#" class="card-link">Card link</a>
     <button type="button" class="btn btn-primary" @click="addCarrinho(item)">Adicionar</button>
+
   </div>
+  <ul class="list-group list-group-flush" >
+    <li class="list-group-item">
+  <p>Preço: R${{ item.preco }}</p>
+    </li>
+  </ul>
 </div>
 </div>
+
 <ul>
     
 </ul>
 </div>
 </div>
+
 </template>
 
 <style scoped>
