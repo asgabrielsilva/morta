@@ -171,7 +171,7 @@ function remover(index) {
 
 <template>
   <div class="greice">
-  <img src="components/13235657_1117075674982087_6011802041793867339_o.jpg" alt="">
+  <img src="" alt="">
 
   <div class="abananga">
   <div class="collapse" id="navbarToggleExternalContent">
@@ -226,8 +226,8 @@ function remover(index) {
   </div>
 </nav>
   <div class="row">
- <div class="card" style="width: 15rem;" v-for="(item, index) in item" :key="item.id">
-  <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t31.18172-8/13235657_1117075674982087_6011802041793867339_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=0NaXfo85KHQAX_FnKrm&_nc_ht=scontent.fjoi10-1.fna&oh=00_AfCqNlBsA787d6PDGSSQhNwGVfH8cg_ioVthaPG2kd-MOA&oe=64875ED9" class="card-img-top" alt="...">
+ <div class="card" style="width: 15rem; margin: 15px;" v-for="(item, index) in item" :key="item.id">
+  <img src="https://www.shutterstock.com/image-vector/pictures-vector-icon-image-260nw-536173468.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{ item.nome }}</h5>
     <p class="card-text"> {{  item.descricao  }}</p>
@@ -245,7 +245,6 @@ function remover(index) {
   </div>
   <ul class="list-group list-group-flush" >
     <li class="list-group-item">
-  <p>Preço: R${{ item.preco }}</p>
     </li>
   </ul>
 </div>
@@ -273,7 +272,7 @@ function remover(index) {
 .card{
   width: 15rem;
   display: flex;
-  margin: 5px;
+  margin: 10px;
   justify-content: center;
   align-items: center;
   border-style: solid;
@@ -321,7 +320,7 @@ a.card-link {
 .greice {
   width: 100%;
   height: 100%;
-  background-image: url("components/13235657_1117075674982087_6011802041793867339_o.jpg");
+  background-image: url("");
 }
 
 p {
