@@ -155,6 +155,9 @@ const valorTotal = ref(0)
   valorTotal.value = valorTotal.value.toFixed(2)
   }
 function limpaCarrinho() {
+for(let i in item.value) {
+  item.value[i].quantidade = 0
+  }
   carrinho.value = []
   calcularTotal()
 }
